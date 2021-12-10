@@ -429,7 +429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408527838}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.12, y: 1.1, z: 0}
+  m_LocalPosition: {x: -1.81, y: -2.66, z: 0}
   m_LocalScale: {x: 7.190636, y: 7.1486835, z: 7.233313}
   m_Children: []
   m_Father: {fileID: 0}
@@ -443,18 +443,18 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408527838}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 100
+  m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &408527842
 MonoBehaviour:
@@ -476,6 +476,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 24fdf8f9b3e528648a2e5983d85866e9, type: 3}
   - {fileID: 21300000, guid: a764768f1d23fa44698d8352ca2d223c, type: 3}
   spriteRenderer: {fileID: 408527839}
+  bounceTime: 1
+  bounce: 10
 --- !u!61 &408527843
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -807,8 +809,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 680704039}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.9, y: -4.19, z: 0}
-  m_LocalScale: {x: 2.3640032, y: 1.5644807, z: 1}
+  m_LocalPosition: {x: 8.8, y: -4.19, z: 0}
+  m_LocalScale: {x: 2.0094028, y: 1.5644807, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -1215,12 +1217,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1889132947}
   - component: {fileID: 1889132946}
-  - component: {fileID: 1889132945}
   - component: {fileID: 1889132944}
   - component: {fileID: 1889132943}
-  - component: {fileID: 1889132948}
+  - component: {fileID: 1889132945}
   m_Layer: 0
-  m_Name: glass05red
+  m_Name: Snail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1234,7 +1235,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889132942}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
@@ -1242,11 +1243,11 @@ Rigidbody2D:
   m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 6200000, guid: 00b8e106e5e65534f818f7941edbe6e9, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 7
 --- !u!61 &1889132944
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1260,7 +1261,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.012135565, y: 0.0091016665}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1271,7 +1272,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.4413557, y: 0.4231525}
   m_EdgeRadius: 0
 --- !u!114 &1889132945
 MonoBehaviour:
@@ -1282,13 +1283,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1889132942}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b202aa5136611b4da3bd59b559308ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ac4e17e52a42e64bb32acac6bcc05ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1
-  MinCords: 0
-  MaxCords: 0
-  transformY: 0
+  pushForce: 10
+  rb: {fileID: 408527841}
+  rb2: {fileID: 1889132943}
 --- !u!212 &1889132946
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1348,28 +1348,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1889132942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.6, y: -2.95, z: 0}
+  m_LocalPosition: {x: -5.6, y: -0.47, z: 0}
   m_LocalScale: {x: 5.6804, y: 5.6804, z: 5.6804}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1889132948
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1889132942}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b202aa5136611b4da3bd59b559308ce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 2
-  MinCords: -3.6
-  MaxCords: 4.98
-  transformY: 0
 --- !u!1 &1938610870
 GameObject:
   m_ObjectHideFlags: 0

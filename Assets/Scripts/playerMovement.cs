@@ -6,10 +6,12 @@ public class playerMovement : MonoBehaviour
 {
     public float movementSpeed;
     public Rigidbody2D rb;
-    private Vector2 moveDirection;
     public Sprite[] charaterSprites;
     public SpriteRenderer spriteRenderer;
-    bool isBouncing;
+    public float bounceTime;
+    public float bounce;
+    bool isBouncing = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -20,44 +22,31 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-      //  float moveX = Input.GetAxisRaw("Horizontal");
-      //  float moveY = Input.GetAxisRaw("Vertical");
-
-     //   moveDirection = new Vector2(moveX, moveY).normalized;
-
         Vector2 UserInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        transform.Translate(UserInput * movementSpeed * Time.deltaTime);
-        ChangeSprite(UserInput.x, UserInput.y);
-        //    Move();
+        if(!isBouncing)
+        {
+            transform.Translate(UserInput * movementSpeed * Time.deltaTime);
+            ChangeSprite(UserInput.x, UserInput.y);
+        }
+       
     }
    
-    void Move()
-    {
-       // rb.velocity = new Vector2(moveDirection.x * movementSpeed, moveDirection.y * movementSpeed);
-        ChangeSprite(moveDirection.x, moveDirection.y);
-    }
     void OnCollisionEnter2D(Collision2D collision)
     {   
             if (collision.gameObject.name == "Snail")
             {
-              //  isBouncing = true;
-                float bounce = 2f; //amount of force to apply
+                isBouncing = true;
                 rb.AddForce(collision.contacts[0].normal * bounce, ForceMode2D.Impulse);
-
-                Debug.Log("Touched");
+                StartCoroutine(BounceCoroutine());
         }     
     }
-
-    void OnCollisionExit2D(Collision2D collision)
+    private IEnumerator BounceCoroutine()
     {
-        if (collision.gameObject.name == "Snail")
-        {
-           // isBouncing = false;
-            Debug.Log("Touched");
-       //     rb.velocity = Vector2.zero;
-        }
+        yield return new WaitForSeconds(bounceTime);
+        rb.velocity = Vector2.zero;
+        isBouncing = false;
     }
-        void ChangeSprite(float x, float y)
+void ChangeSprite(float x, float y)
     {
         int spriteNumber = 1;
         if (y == -1) // down
@@ -76,7 +65,6 @@ public class playerMovement : MonoBehaviour
         {
             spriteNumber = 3;
         }
-      //  Debug.Log(spriteNumber);
         spriteRenderer.sprite = charaterSprites[spriteNumber];
     }
 }
