@@ -9,6 +9,7 @@ public class playerMovement : MonoBehaviour
     private Vector2 moveDirection;
     public Sprite[] charaterSprites;
     public SpriteRenderer spriteRenderer;
+    bool isBouncing;
 
     // Start is called before the first frame update
     void Start()
@@ -19,33 +20,47 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+      //  float moveX = Input.GetAxisRaw("Horizontal");
+      //  float moveY = Input.GetAxisRaw("Vertical");
 
-        moveDirection = new Vector2(moveX, moveY).normalized;
-     //   Move();
+     //   moveDirection = new Vector2(moveX, moveY).normalized;
+
+        Vector2 UserInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        transform.Translate(UserInput * movementSpeed * Time.deltaTime);
+        ChangeSprite(UserInput.x, UserInput.y);
+        //    Move();
     }
-
-    private void FixedUpdate()
-    {
-        rb.velocity = new Vector2(moveDirection.x * movementSpeed, moveDirection.y * movementSpeed);
-    }
-
+   
     void Move()
     {
-      //  rb.velocity = new Vector2(moveDirection.x * movementSpeed, moveDirection.y * movementSpeed);
+       // rb.velocity = new Vector2(moveDirection.x * movementSpeed, moveDirection.y * movementSpeed);
         ChangeSprite(moveDirection.x, moveDirection.y);
     }
     void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-            float bounce = 5000f; //amount of force to apply
-            rb.AddForce(collision.contacts[0].normal * bounce);
-      
-            Debug.Log("Touched");
+    {   
+        if(isBouncing == false)
+        {
+            if (collision.gameObject.name == "Snail")
+            {
+                isBouncing = true;
+                float bounce = 50f; //amount of force to apply
+                rb.AddForce(new Vector2(bounce, 0), ForceMode2D.Impulse);
+
+                Debug.Log("Touched");
+            }
+        }     
     }
 
-    void ChangeSprite(float x, float y)
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.name == "Snail")
+        {
+            isBouncing = false;
+            Debug.Log("Exited");
+            rb.velocity = Vector2.zero;
+        }
+    }
+        void ChangeSprite(float x, float y)
     {
         int spriteNumber = 1;
         if (y == -1) // down
