@@ -11,6 +11,8 @@ public class playerMovement : MonoBehaviour
     public float bounceTime;
     public float bounce;
     bool isBouncing = false;
+    bool isPulling = false;
+    string pullObjectName;
 
 
     // Start is called before the first frame update
@@ -28,17 +30,39 @@ public class playerMovement : MonoBehaviour
             transform.Translate(UserInput * movementSpeed * Time.deltaTime);
             ChangeSprite(UserInput.x, UserInput.y);
         }
-       
+  
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if(pullObjectName == "item")
+            {
+                Debug.Log(Vector2.Distance(rb.position, GameObject.Find(pullObjectName).GetComponent<Rigidbody2D>().position));
+                if(Vector2.Distance(rb.position, GameObject.Find(pullObjectName).GetComponent<Rigidbody2D>().position) < 1)
+                {
+                    if (isPulling == false)
+                    {
+                      //  isPulling = true;
+                        GameObject.Find("item").GetComponent<Rigidbody2D>().position = new Vector2(rb.position.x, rb.position.y);
+                    }
+                   
+                }
+               
+
+            }
+
+        }
     }
    
     void OnCollisionEnter2D(Collision2D collision)
     {   
-            if (collision.gameObject.name == "Snail")
-            {
-                isBouncing = true;
-                rb.AddForce(collision.contacts[0].normal * bounce, ForceMode2D.Impulse);
-                StartCoroutine(BounceCoroutine());
-        }     
+        pullObjectName = collision.gameObject.name;
+
+        if (collision.gameObject.name == "Snail")
+        {
+            isBouncing = true;
+            rb.AddForce(collision.contacts[0].normal * bounce, ForceMode2D.Impulse);
+            StartCoroutine(BounceCoroutine());
+        }
     }
     private IEnumerator BounceCoroutine()
     {

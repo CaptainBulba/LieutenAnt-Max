@@ -443,11 +443,11 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408527838}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -476,8 +476,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 24fdf8f9b3e528648a2e5983d85866e9, type: 3}
   - {fileID: 21300000, guid: a764768f1d23fa44698d8352ca2d223c, type: 3}
   spriteRenderer: {fileID: 408527839}
-  bounceTime: 1
-  bounce: 10
+  bounceTime: 0.2
+  bounce: 15
 --- !u!61 &408527843
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -517,7 +517,7 @@ GameObject:
   - component: {fileID: 467847156}
   - component: {fileID: 467847159}
   m_Layer: 0
-  m_Name: berry04red
+  m_Name: item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -535,7 +535,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 1
   m_LinearDrag: 1
   m_AngularDrag: 1
   m_GravityScale: 0
@@ -618,7 +618,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 467847155}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: ec7902d40f25f4d44b374138a943395c, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
