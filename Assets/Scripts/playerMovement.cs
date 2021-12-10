@@ -38,16 +38,13 @@ public class playerMovement : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {   
-        if(isBouncing == false)
-        {
             if (collision.gameObject.name == "Snail")
             {
-                isBouncing = true;
-                float bounce = 50f; //amount of force to apply
-                rb.AddForce(new Vector2(bounce, 0), ForceMode2D.Impulse);
+              //  isBouncing = true;
+                float bounce = 2f; //amount of force to apply
+                rb.AddForce(collision.contacts[0].normal * bounce, ForceMode2D.Impulse);
 
                 Debug.Log("Touched");
-            }
         }     
     }
 
@@ -55,9 +52,9 @@ public class playerMovement : MonoBehaviour
     {
         if (collision.gameObject.name == "Snail")
         {
-            isBouncing = false;
-            Debug.Log("Exited");
-            rb.velocity = Vector2.zero;
+           // isBouncing = false;
+            Debug.Log("Touched");
+       //     rb.velocity = Vector2.zero;
         }
     }
         void ChangeSprite(float x, float y)
