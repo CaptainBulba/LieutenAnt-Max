@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTwo : MonoBehaviour
+public class SnailOne : MonoBehaviour
 {
     private float dirX;
     private float moveSpeed;

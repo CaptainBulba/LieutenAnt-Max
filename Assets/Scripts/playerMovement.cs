@@ -10,7 +10,6 @@ public class playerMovement : MonoBehaviour
     public Sprite[] charaterSprites;
     public SpriteRenderer spriteRenderer;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -24,15 +23,27 @@ public class playerMovement : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
 
         moveDirection = new Vector2(moveX, moveY).normalized;
-        Move();
-    }
-   
-    void Move()
-    {
-        rb.velocity = new Vector2(moveDirection.x * movementSpeed, moveDirection.y * movementSpeed);
-        ChangeSprite(moveDirection.x, moveDirection.y);
+     //   Move();
     }
 
+    private void FixedUpdate()
+    {
+        rb.velocity = new Vector2(moveDirection.x * movementSpeed, moveDirection.y * movementSpeed);
+    }
+
+    void Move()
+    {
+      //  rb.velocity = new Vector2(moveDirection.x * movementSpeed, moveDirection.y * movementSpeed);
+        ChangeSprite(moveDirection.x, moveDirection.y);
+    }
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        
+            float bounce = 5000f; //amount of force to apply
+            rb.AddForce(collision.contacts[0].normal * bounce);
+      
+            Debug.Log("Touched");
+    }
 
     void ChangeSprite(float x, float y)
     {
