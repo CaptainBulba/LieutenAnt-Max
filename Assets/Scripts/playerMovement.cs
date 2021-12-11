@@ -5,7 +5,7 @@ using UnityEngine;
 public class playerMovement : MonoBehaviour
 {
     public float movementSpeed;
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
     public Sprite[] charaterSprites;
     public SpriteRenderer spriteRenderer;
     public float bounceTime;
@@ -13,46 +13,57 @@ public class playerMovement : MonoBehaviour
     bool isBouncing = false;
     bool isPulling = false;
     string pullObjectName;
+    float originalMovementSpeed;
+
+    private Vector3 change;
 
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        rb = GetComponent<Rigidbody2D>();
+        originalMovementSpeed = movementSpeed;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector2 UserInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        if(!isBouncing)
-        {
-            transform.Translate(UserInput * movementSpeed * Time.deltaTime);
-            ChangeSprite(UserInput.x, UserInput.y);
-        }
-  
+        /*   Vector2 UserInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+           if(!isBouncing)
+           {
+               transform.Translate(UserInput * movementSpeed * Time.deltaTime);
+              rb.MovePosition(rb.position + movementSpeed * Time.deltaTime);
+               
+           } */
 
-        if (Input.GetKeyDown(KeyCode.E))
+        change = Vector3.zero;
+        change.x = Input.GetAxisRaw("Horizontal");
+        change.y = Input.GetAxisRaw("Vertical");
+        if (change != Vector3.zero)
+        {
+            Move();
+            ChangeSprite(change.x, change.y);
+        }
+
+        if (Input.GetKey(KeyCode.E))
         {
             if(pullObjectName == "item")
             {
-                Debug.Log(Vector2.Distance(rb.position, GameObject.Find(pullObjectName).GetComponent<Rigidbody2D>().position));
-                if(Vector2.Distance(rb.position, GameObject.Find(pullObjectName).GetComponent<Rigidbody2D>().position) < 1)
-                {
-                    if (isPulling == false)
-                    {
-                      //  isPulling = true;
-                        GameObject.Find("item").GetComponent<Rigidbody2D>().position = new Vector2(rb.position.x, rb.position.y);
-                    }
-                   
-                }
-               
-
+                GameObject.Find("item").GetComponent<Rigidbody2D>().position = new Vector3(rb.position.x - 0.1f, rb.position.y - 0.1f);
+                movementSpeed = 1f;
             }
-
+                
+        }
+        else
+        {
+          //  movementSpeed = originalMovementSpeed;
         }
     }
-   
+    
+    void Move()
+    {
+        rb.MovePosition(transform.position + change * movementSpeed * Time.fixedDeltaTime);
+    }
     void OnCollisionEnter2D(Collision2D collision)
     {   
         pullObjectName = collision.gameObject.name;
@@ -63,8 +74,17 @@ public class playerMovement : MonoBehaviour
             rb.AddForce(collision.contacts[0].normal * bounce, ForceMode2D.Impulse);
             StartCoroutine(BounceCoroutine());
         }
+        if (collision.gameObject.name == "item")
+        {
+            Debug.Log("Yeah");
+        }
     }
-    private IEnumerator BounceCoroutine()
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        pullObjectName = "";
+    }
+        private IEnumerator BounceCoroutine()
     {
         yield return new WaitForSeconds(bounceTime);
         rb.velocity = Vector2.zero;
@@ -76,7 +96,8 @@ void ChangeSprite(float x, float y)
         if (y == -1) // down
         {
             spriteNumber = 0;
-        } else if (y == 1) // up
+        } 
+        else if (y == 1) // up
         {
             spriteNumber = 1;
         }
