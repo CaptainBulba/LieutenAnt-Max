@@ -15,6 +15,10 @@ public class playerMovement : MonoBehaviour
     string pullObjectName;
     float originalMovementSpeed;
 
+    bool isPushing = false;
+
+    int spriteNumber = 1; // current sprite
+
     private Vector3 change;
 
 
@@ -28,31 +32,26 @@ public class playerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*   Vector2 UserInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-           if(!isBouncing)
-           {
-               transform.Translate(UserInput * movementSpeed * Time.deltaTime);
-              rb.MovePosition(rb.position + movementSpeed * Time.deltaTime);
-               
-           } */
-
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
-        if (change != Vector3.zero)
+
+        if(!isBouncing)
         {
-            Move();
-            ChangeSprite(change.x, change.y);
+            if (change != Vector3.zero)
+            {
+                Move();
+                ChangeSprite(change.x, change.y);
+            }
         }
 
         if (Input.GetKey(KeyCode.E))
         {
             if(pullObjectName == "item")
             {
-                GameObject.Find("item").GetComponent<Rigidbody2D>().position = new Vector3(rb.position.x - 0.1f, rb.position.y - 0.1f);
-                movementSpeed = 1f;
+                GameObject.Find("item").GetComponent<Rigidbody2D>().position = new Vector3(rb.position.x - 0.1f, rb.position.y + 1f);
+                //movementSpeed = 1f;
             }
-                
         }
         else
         {
@@ -76,18 +75,23 @@ public class playerMovement : MonoBehaviour
         }
         if (collision.gameObject.name == "item")
         {
-            Debug.Log("Yeah");
+            isPushing = true;
+            
         }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
         pullObjectName = "";
+        if (collision.gameObject.name == "item")
+        {
+            isPushing = false;
+        }
     }
-        private IEnumerator BounceCoroutine()
+    private IEnumerator BounceCoroutine()
     {
         yield return new WaitForSeconds(bounceTime);
-        rb.velocity = Vector2.zero;
+        rb.velocity = Vector3.zero;
         isBouncing = false;
     }
 void ChangeSprite(float x, float y)
@@ -110,6 +114,8 @@ void ChangeSprite(float x, float y)
         {
             spriteNumber = 3;
         }
+        Destroy(GetComponent<BoxCollider2D>());
+        gameObject.AddComponent<BoxCollider2D>();
         spriteRenderer.sprite = charaterSprites[spriteNumber];
     }
 }

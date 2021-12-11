@@ -21,8 +21,8 @@ public class SnailTwo : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other)
     {
-       // Debug.Log("touched");
-       // gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * 1f * 10f, ForceMode2D.Impulse);
+        Debug.Log("touched");
+        gameObject.GetComponent<Rigidbody2D>().AddForce(transform.right * 1f * 10f, ForceMode2D.Impulse);
     }
 
 
