@@ -20,7 +20,6 @@ public class Snail : MonoBehaviour
     void Update()
     {
         MoveEnemy();
-        Debug.Log("Update");
     }
 
     void MoveEnemy()
