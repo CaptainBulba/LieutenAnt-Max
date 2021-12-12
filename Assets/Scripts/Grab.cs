@@ -14,7 +14,7 @@ public class Grab : MonoBehaviour
     void Start()
     {
 
-       originalSpeed = gameObject.GetComponent<playerMovement>().movementSpeed;
+       originalSpeed = gameObject.GetComponent<PlayerMovement>().movementSpeed;
     }
 
     void Update()
@@ -25,15 +25,15 @@ public class Grab : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.G))
             {
-                Debug.Log(gameObject.GetComponent<playerMovement>().spriteRenderer.sprite.name);
+                Debug.Log(gameObject.GetComponent<PlayerMovement>().spriteRenderer.sprite.name);
                 grabCheck.collider.gameObject.transform.parent = boxHolder;
                 grabCheck.collider.gameObject.transform.position = boxHolder.position;
-                gameObject.GetComponent<playerMovement>().movementSpeed = 1f;
+                gameObject.GetComponent<PlayerMovement>().movementSpeed = 1f;
             }
             else
             {
                 grabCheck.collider.gameObject.transform.parent = null;
-                gameObject.GetComponent<playerMovement>().movementSpeed = originalSpeed;
+                gameObject.GetComponent<PlayerMovement>().movementSpeed = originalSpeed;
             }
         }
       

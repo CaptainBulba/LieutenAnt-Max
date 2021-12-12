@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LadyBug : MonoBehaviour
 {
-    public playerMovement character;
+    public PlayerMovement character;
     bool isSlowDownOn;
     public float slowDownSpeed;
     public float slowDownTime;
