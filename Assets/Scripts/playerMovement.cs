@@ -21,7 +21,6 @@ public class playerMovement : MonoBehaviour
 
     private Vector3 change;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -43,19 +42,6 @@ public class playerMovement : MonoBehaviour
                 Move();
                 ChangeSprite(change.x, change.y);
             }
-        }
-
-        if (Input.GetKey(KeyCode.E))
-        {
-            if(pullObjectName == "item")
-            {
-                GameObject.Find("item").GetComponent<Rigidbody2D>().position = new Vector3(rb.position.x - 0.1f, rb.position.y + 1f);
-                //movementSpeed = 1f;
-            }
-        }
-        else
-        {
-          //  movementSpeed = originalMovementSpeed;
         }
     }
     
@@ -85,7 +71,7 @@ public class playerMovement : MonoBehaviour
         pullObjectName = "";
         if (collision.gameObject.name == "item")
         {
-            isPushing = false;
+           // isPushing = false;
         }
     }
     private IEnumerator BounceCoroutine()
@@ -96,7 +82,6 @@ public class playerMovement : MonoBehaviour
     }
 void ChangeSprite(float x, float y)
     {
-        int spriteNumber = 1;
         if (y == -1) // down
         {
             spriteNumber = 0;

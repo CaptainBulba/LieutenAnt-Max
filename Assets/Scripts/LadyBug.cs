@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LadyBug : MonoBehaviour
 {
-    [SerializeField] playerMovement character;
+    public playerMovement character;
     bool isSlowDownOn;
     // Start is called before the first frame update
     void Start()
