@@ -6,6 +6,8 @@ public class LadyBug : MonoBehaviour
 {
     public playerMovement character;
     bool isSlowDownOn;
+    public float slowDownSpeed;
+    public float slowDownTime;
 
 private void OnTriggerEnter2D()
     {
@@ -17,10 +19,10 @@ private void OnTriggerEnter2D()
     IEnumerator ExampleCoroutine()
     {
         float normalSpeed = character.movementSpeed;
-        character.movementSpeed = character.movementSpeed - 9;
+        character.movementSpeed = character.movementSpeed - slowDownSpeed;
         isSlowDownOn = true;
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(slowDownTime);
 
         character.movementSpeed = normalSpeed;
         isSlowDownOn = false;
