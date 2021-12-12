@@ -8,8 +8,9 @@ public class EnemyMove : MonoBehaviour
     public float MinCords;
     public float MaxCords;
     int direction = 0;
+    [Tooltip("True to activate Y axis")]
     public bool transformY = false;
-
+ 
     void Update()
     {
         MoveEnemy();
