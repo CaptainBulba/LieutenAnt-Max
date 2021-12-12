@@ -11,11 +11,6 @@ public class PlayerMovement : MonoBehaviour
     public float bounceTime;
     public float bounce;
     bool isBouncing = false;
-    bool isPulling = false;
-    string pullObjectName;
-    float originalMovementSpeed;
-
-    bool isPushing = false;
 
     int spriteNumber = 1; // current sprite
 
@@ -25,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        originalMovementSpeed = movementSpeed;
     }
 
     // Update is called once per frame
@@ -51,29 +45,14 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {   
-        pullObjectName = collision.gameObject.name;
-
         if (collision.gameObject.name == "Snail")
         {
             isBouncing = true;
             rb.AddForce(collision.contacts[0].normal * bounce, ForceMode2D.Impulse);
             StartCoroutine(BounceCoroutine());
         }
-        if (collision.gameObject.name == "item")
-        {
-            isPushing = true;
-            
-        }
     }
 
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        pullObjectName = "";
-        if (collision.gameObject.name == "item")
-        {
-           // isPushing = false;
-        }
-    }
     private IEnumerator BounceCoroutine()
     {
         yield return new WaitForSeconds(bounceTime);
