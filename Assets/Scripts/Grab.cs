@@ -28,13 +28,11 @@ public class Grab : MonoBehaviour
                 Debug.Log(gameObject.GetComponent<playerMovement>().spriteRenderer.sprite.name);
                 grabCheck.collider.gameObject.transform.parent = boxHolder;
                 grabCheck.collider.gameObject.transform.position = boxHolder.position;
-                grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = true;
                 gameObject.GetComponent<playerMovement>().movementSpeed = 1f;
             }
             else
             {
                 grabCheck.collider.gameObject.transform.parent = null;
-                grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().isKinematic = false;
                 gameObject.GetComponent<playerMovement>().movementSpeed = originalSpeed;
             }
         }
