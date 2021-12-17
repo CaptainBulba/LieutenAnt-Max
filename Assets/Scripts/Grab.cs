@@ -12,8 +12,7 @@ public class Grab : MonoBehaviour
     // Update is called once per frame
 
     void Start()
-    {
-
+    { 
        originalSpeed = gameObject.GetComponent<PlayerMovement>().movementSpeed;
     }
 
