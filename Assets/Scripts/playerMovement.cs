@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
 
-        if(!isBouncing)
+        if (!isBouncing)
         {
             if (change != Vector3.zero)
             {
@@ -38,13 +38,13 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    
+
     void Move()
     {
         rb.MovePosition(transform.position + change * movementSpeed * Time.fixedDeltaTime);
     }
     void OnCollisionEnter2D(Collision2D collision)
-    {   
+    {
         if (collision.gameObject.name == "Snail")
         {
             isBouncing = true;
@@ -59,12 +59,12 @@ public class PlayerMovement : MonoBehaviour
         rb.velocity = Vector3.zero;
         isBouncing = false;
     }
-void ChangeSprite(float x, float y)
+    void ChangeSprite(float x, float y)
     {
         if (y == -1) // down
         {
             spriteNumber = 0;
-        } 
+        }
         else if (y == 1) // up
         {
             spriteNumber = 1;
@@ -73,7 +73,7 @@ void ChangeSprite(float x, float y)
         if (x == -1) // left
         {
             spriteNumber = 2;
-        } 
+        }
         else if (x == 1) // right
         {
             spriteNumber = 3;
