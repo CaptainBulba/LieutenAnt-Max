@@ -10,6 +10,9 @@ public class EnemyMove : MonoBehaviour
     int direction = 0;
     [Tooltip("True to activate Y axis")]
     public bool transformY = false;
+    public float rotateMinCords;
+    public float rotateMaxCords;
+   
  
     void Update()
     {
@@ -35,6 +38,7 @@ public class EnemyMove : MonoBehaviour
                     if (!transformY)
                     {
                         GetComponent<Rigidbody2D>().velocity = new Vector2(-movementSpeed, GetComponent<Rigidbody2D>().velocity.y);
+                        
                     }
                     else
                     {
@@ -43,7 +47,9 @@ public class EnemyMove : MonoBehaviour
                 }
                 else
                 {
+                    gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotateMinCords));
                     direction = 1;
+                   
                 }
                 break;
 
@@ -53,15 +59,19 @@ public class EnemyMove : MonoBehaviour
                     if (!transformY)
                     {
                         GetComponent<Rigidbody2D>().velocity = new Vector2(movementSpeed, GetComponent<Rigidbody2D>().velocity.y);
+                        
                     }
                     else
                     {
+                      
                         GetComponent<Rigidbody2D>().velocity = new Vector2(GetComponent<Rigidbody2D>().velocity.x, movementSpeed);
                     }
                 }
                 else
                 {
+                    gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotateMaxCords));
                     direction = 0;
+                    
                 }
                 break;
         }

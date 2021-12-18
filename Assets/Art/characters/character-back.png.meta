@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b1582296f9a627a4cbdaf023ef742e57
+guid: 6f16064598ba4c34ab095671f076ce86
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6034718139261117054
-    second: object_blueberry_0
+      213: 1398247437258442223
+    second: character-back_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,22 +106,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: object_blueberry_0
+      name: character-back_0
       rect:
         serializedVersion: 2
-        x: 36
-        y: 29
-        width: 56
-        height: 82
+        x: 15
+        y: 11
+        width: 105
+        height: 129
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 0, y: 0, z: 7, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 28d1cbd53df504ca0800000000000000
-      internalID: -6034718139261117054
+      spriteID: fe5c3edc2a2976310800000000000000
+      internalID: 1398247437258442223
       vertices: []
       indices: 
       edges: []
