@@ -4,62 +4,39 @@ using UnityEngine;
 
 public class Snail : MonoBehaviour
 {
-    public float movementSpeed;
-    public float MinCords;
-    public float MaxCords;
-    int direction = 0;
-    public bool transformY = false;
+
+    public float changeSpriteTime;
+    public Sprite[] trailSprites;
+    public SpriteRenderer spriteRenderer;
+    int spriteNumber = 1;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        StartCoroutine(ChangeSprite());
     }
 
-    // Update is called once per frame
     void Update()
     {
-        MoveEnemy();
+        
     }
 
-    void MoveEnemy()
-    {
-        float dimensionToTransform;
-        if (transformY == false)
+    IEnumerator ChangeSprite()
         {
-            dimensionToTransform = transform.position.x;
-        }
-        else
-        {
-            dimensionToTransform = transform.position.y;
-        }
+            for (; ;)
+            {
+                yield return new WaitForSeconds(changeSpriteTime);
 
-        switch (direction)
-        {
-            case 0:
-                // Moving Left
-                Debug.Log(transform.position.x + " transform");
-                Debug.Log(MinCords);
-                if (dimensionToTransform > MinCords)
+                if (spriteNumber == 4)
                 {
-                    GetComponent<Rigidbody2D>().velocity = new Vector2(-movementSpeed, GetComponent<Rigidbody2D>().velocity.y);
+                    spriteNumber = 0;
                 }
                 else
                 {
-                    direction = 1;
+                    spriteNumber++;
                 }
-                break;
-            case 1:
-                //Moving Right
-                if (dimensionToTransform < MaxCords)
-                {
-                    GetComponent<Rigidbody2D>().velocity = new Vector2(movementSpeed, GetComponent<Rigidbody2D>().velocity.y);
-                }
-                else
-                {
-                    direction = 0;
-                }
-                break;
+                spriteRenderer.sprite = trailSprites[spriteNumber];
+            }
         }
+
     }
-}

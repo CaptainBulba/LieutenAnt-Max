@@ -13,7 +13,6 @@ private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player" && !isSlowDownOn)
         {
-            Debug.Log("Slowdown bro");
             StartCoroutine(slowDownTimer()); 
         }
     }
