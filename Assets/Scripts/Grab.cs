@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Grab : MonoBehaviour
 {
-    private Transform grabDetect;
+    [HideInInspector] public Transform grabDetect;
     public Transform grabFront;
     public Transform grabLeft;
     public Transform grabRight;
@@ -12,7 +12,7 @@ public class Grab : MonoBehaviour
     public Transform itemHolder;
     float originalSpeed;
     public float distance = 2f;
-    private GameObject itemHolding;
+    [HideInInspector] public GameObject itemHolding;
     [HideInInspector] public bool isPicked;
     public float speedWithItem;
     
