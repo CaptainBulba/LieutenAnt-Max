@@ -9,14 +9,15 @@ public class LadyBug : MonoBehaviour
     public float slowDownSpeed;
     public float slowDownTime;
 
-private void OnTriggerEnter2D()
+private void OnTriggerEnter2D(Collider2D col)
     {
-        if (!isSlowDownOn)
+        if (col.gameObject.tag == "Player" && !isSlowDownOn)
         {
-            StartCoroutine(ExampleCoroutine()); 
+            Debug.Log("Slowdown bro");
+            StartCoroutine(slowDownTimer()); 
         }
     }
-    IEnumerator ExampleCoroutine()
+    IEnumerator slowDownTimer()
     {
         float normalSpeed = character.movementSpeed;
         character.movementSpeed = character.movementSpeed - slowDownSpeed;

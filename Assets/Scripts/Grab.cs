@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class Grab : MonoBehaviour
 {
-    public Transform grabDetect;
-    public Transform boxHolder;
-    public float rayDist;
+    private Transform grabDetect;
+    public Transform grabFront;
+    public Transform grabLeft;
+    public Transform grabRight;
+    public Transform grabBack;
+    public Transform itemHolder;
     float originalSpeed;
-
-    // Update is called once per frame
+    public float distance = 2f;
+    private GameObject itemHolding;
+    bool isPicked;
+    public float speedWithItem;
+    
 
     void Start()
     { 
@@ -18,23 +24,48 @@ public class Grab : MonoBehaviour
 
     void Update()
     {
-        RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, transform.localScale, rayDist);
-
-        if (grabCheck.collider != null && grabCheck.collider.tag == "Item")
+        switch(gameObject.GetComponent<PlayerMovement>().spriteNumber)
         {
-            if (Input.GetKey(KeyCode.G))
-            {
-                Debug.Log(gameObject.GetComponent<PlayerMovement>().spriteRenderer.sprite.name);
-                grabCheck.collider.gameObject.transform.parent = boxHolder;
-                grabCheck.collider.gameObject.transform.position = boxHolder.position;
-                gameObject.GetComponent<PlayerMovement>().movementSpeed = 1f;
-            }
-            else
-            {
-                grabCheck.collider.gameObject.transform.parent = null;
-                gameObject.GetComponent<PlayerMovement>().movementSpeed = originalSpeed;
-            }
+            case 0:
+                grabDetect = grabBack;
+                break;
+            case 1:
+                grabDetect = grabFront;
+                break;
+            case 2:
+                grabDetect = grabLeft;
+                break;
+            case 3:
+                grabDetect = grabRight;
+                break;
         }
+        RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, transform.localScale, distance);
       
-    }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (isPicked)
+            {
+                Debug.Log("Not holding");
+                itemHolding.GetComponent<Rigidbody2D>().simulated = true;
+                itemHolding.transform.parent = null;
+                itemHolding.transform.position = grabDetect.position;
+                gameObject.GetComponent<PlayerMovement>().movementSpeed = originalSpeed;
+                isPicked = false;
+                return;
+            }
+            if (grabCheck.collider != null && grabCheck.collider.tag == "Item" && isPicked == false)
+            {
+                Debug.Log("Space");
+                isPicked = true;
+                itemHolding = grabCheck.collider.gameObject;
+                grabCheck.collider.GetComponent<Rigidbody2D>().simulated = false;
+                grabCheck.collider.gameObject.transform.parent = itemHolder;
+                grabCheck.collider.gameObject.transform.position = itemHolder.position;
+                gameObject.GetComponent<PlayerMovement>().movementSpeed = speedWithItem;
+                return;
+            }
+            
+        }
+    }   
 }
+

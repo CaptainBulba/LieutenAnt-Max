@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     public float bounce;
     bool isBouncing = false;
 
-    int spriteNumber = 1; // current sprite
+    [HideInInspector] public int spriteNumber = 1; // current sprite
 
     private Vector3 change;
 
@@ -45,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.name == "Snail")
+        if (collision.collider.tag == "Snail")
         {
             isBouncing = true;
             rb.AddForce(collision.contacts[0].normal * bounce, ForceMode2D.Impulse);
