@@ -13,7 +13,7 @@ public class Grab : MonoBehaviour
     float originalSpeed;
     public float distance = 2f;
     private GameObject itemHolding;
-    bool isPicked;
+    [HideInInspector] public bool isPicked;
     public float speedWithItem;
     
 
@@ -45,7 +45,6 @@ public class Grab : MonoBehaviour
         {
             if (isPicked)
             {
-                Debug.Log("Not holding");
                 itemHolding.GetComponent<Rigidbody2D>().simulated = true;
                 itemHolding.transform.parent = null;
                 itemHolding.transform.position = grabDetect.position;
@@ -55,7 +54,6 @@ public class Grab : MonoBehaviour
             }
             if (grabCheck.collider != null && grabCheck.collider.tag == "Item" && isPicked == false)
             {
-                Debug.Log("Space");
                 isPicked = true;
                 itemHolding = grabCheck.collider.gameObject;
                 grabCheck.collider.GetComponent<Rigidbody2D>().simulated = false;
