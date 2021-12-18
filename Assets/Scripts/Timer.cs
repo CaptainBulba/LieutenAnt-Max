@@ -2,18 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
-
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
     public float timeRemaining = 10;
     bool IsRunning = false;
     public TextMeshProUGUI textMeshPro;
+    int currentLevel;
+
 
 
     void Start()
     {
+        currentLevel = SceneManager.GetActiveScene().buildIndex;
         IsRunning = true;
     }
 
@@ -30,6 +32,8 @@ public class Timer : MonoBehaviour
             {
                 timeRemaining = 0;
                 IsRunning = false;
+                PlayerPrefs.SetInt("levelTorestart", currentLevel);
+                SceneManager.LoadScene(4);
             }
         }
     }

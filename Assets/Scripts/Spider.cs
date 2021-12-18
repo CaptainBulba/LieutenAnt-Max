@@ -23,6 +23,7 @@ public class Spider : MonoBehaviour
             grab.itemHolding.GetComponent<Rigidbody2D>().simulated = true;
             grab.itemHolding.transform.parent = null;
             grab.itemHolding.transform.position = grab.grabDetect.position;
+
             grab.itemHolding.GetComponent<Rigidbody2D>().velocity = new Vector2(0.0f, 10.0f);
             grab.isPicked = false;
         }   

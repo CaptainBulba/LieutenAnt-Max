@@ -5,7 +5,7 @@ using UnityEngine;
 public class LadyBug : MonoBehaviour
 {
     public PlayerMovement character;
-    bool isSlowDownOn;
+    public bool isSlowDownOn = false;
     public float slowDownSpeed;
     public float slowDownTime;
 
@@ -13,7 +13,8 @@ private void OnTriggerEnter2D(Collider2D col)
     {
         if (col.gameObject.tag == "Player" && !isSlowDownOn)
         {
-            StartCoroutine(slowDownTimer()); 
+            StartCoroutine(slowDownTimer());
+            
         }
     }
     IEnumerator slowDownTimer()

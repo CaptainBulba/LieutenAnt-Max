@@ -41,7 +41,6 @@ public class LoadScene : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         GameObject collisionGameObject = col.gameObject;
-        Debug.Log(col.gameObject.name + " : " + gameObject.name + " : " + Time.time);
         if (collisionGameObject.name == "Player")
         {
             LoadNextScene() ;
