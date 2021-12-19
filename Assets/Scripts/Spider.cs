@@ -40,7 +40,7 @@ public class Spider : MonoBehaviour
         spider.GetComponent<Renderer>().enabled = true;
         spriteRenderer.sprite = trailSprites[0];
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         spriteRenderer.sprite = trailSprites[1];
         isSpawned = true;
 

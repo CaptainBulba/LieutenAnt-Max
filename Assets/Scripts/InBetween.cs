@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class InBetween : MonoBehaviour
 {
-    public TextMeshProUGUI mainText;
-    public TextMeshProUGUI antName;
+    public TextMeshProUGUI textLeft;
+    public TextMeshProUGUI textRight;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI finishedTimeText;
     private int whichAnt; // 0 Max & 1 Bob
@@ -246,8 +246,8 @@ public class InBetween : MonoBehaviour
 
     void ChangeText(string text, int ant)
     {
-        mainText.text = string.Format(text);
-        antName.text = string.Format(" — " + antNames[ant]);
+       // mainText.text = string.Format(text);
+        //antName.text = string.Format(" — " + antNames[ant]);
     }
 
 }
