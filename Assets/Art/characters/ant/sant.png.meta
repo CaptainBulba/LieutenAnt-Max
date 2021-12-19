@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 85b547d3a8ed19142b733565ca76305a
+guid: 4062f72d6fea7d14cb4ebfe4c5c5eda7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4401378495943522504
-    second: ant-left_0
+      213: -446239557837708315
+    second: sant_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,22 +106,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ant-left_0
+      name: sant_0
       rect:
         serializedVersion: 2
-        x: 15
+        x: 28
         y: 17
-        width: 107
-        height: 76
+        width: 66
+        height: 89
       alignment: 0
       pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      border: {x: 2, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8374e33d3992be2c0800000000000000
-      internalID: -4401378495943522504
+      spriteID: 5e32b568c73aec9f0800000000000000
+      internalID: -446239557837708315
       vertices: []
       indices: 
       edges: []

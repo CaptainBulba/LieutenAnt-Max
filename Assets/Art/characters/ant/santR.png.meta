@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 2acef963b86b355468e4489114ba9bd3
+guid: c47ca15f430754840b6433ef453cecc8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5897713473899335447
-    second: character-right_0
+      213: -1350819626249685923
+    second: santR_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -106,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: character-right_0
+      name: santR_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 26
-        width: 129
-        height: 99
+        x: 17
+        y: 30
+        width: 89
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -120,8 +120,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 71f0ec63823e8d150800000000000000
-      internalID: 5897713473899335447
+      spriteID: d54f2c5f4bce04de0800000000000000
+      internalID: -1350819626249685923
       vertices: []
       indices: 
       edges: []

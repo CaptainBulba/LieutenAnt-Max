@@ -779,7 +779,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 243214521}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.775, y: -0.01, z: 0}
+  m_LocalPosition: {x: -0.638, y: -0.01, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1134827132}
@@ -1149,7 +1149,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 539758903}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.002, y: -0.775, z: 0}
+  m_LocalPosition: {x: -0.002, y: -0.606, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1134827132}
@@ -1880,16 +1880,16 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.027777778, y: 0, z: 0, w: 0}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.7314815, y: 0.9907407}
-    newSize: {x: 0.08, y: 0.13}
+    oldSize: {x: 0.5925926, y: 0.8240741}
+    newSize: {x: 0.6111111, y: 0.8240741}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7314815, y: 0.9907407}
+  m_Size: {x: 0.6111111, y: 0.8240741}
   m_EdgeRadius: 0
 --- !u!114 &1134827128
 MonoBehaviour:
@@ -1948,10 +1948,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 3
   charaterSprites:
-  - {fileID: 4162474037432833665, guid: afb576385beaeef4bb604c0ba6c8c71d, type: 3}
-  - {fileID: -750517044847883756, guid: bfbe00f1f1dd7014eb93c1dce183a13f, type: 3}
-  - {fileID: -4401378495943522504, guid: 85b547d3a8ed19142b733565ca76305a, type: 3}
-  - {fileID: 342702889049712933, guid: dc6938924c5acc34b863128510bd61b7, type: 3}
+  - {fileID: 2650345199280703579, guid: e338070344e205349917dfba891ea19b, type: 3}
+  - {fileID: -446239557837708315, guid: 4062f72d6fea7d14cb4ebfe4c5c5eda7, type: 3}
+  - {fileID: -7391997166905300346, guid: ae26b5cc9fda6a04da1301b1b0463333, type: 3}
+  - {fileID: -1350819626249685923, guid: c47ca15f430754840b6433ef453cecc8, type: 3}
   spriteRenderer: {fileID: 1134827131}
   bounceTime: 0.3
   bounce: 5
@@ -1996,12 +1996,12 @@ SpriteRenderer:
   m_SortingLayerID: -1410358053
   m_SortingLayer: 4
   m_SortingOrder: 1
-  m_Sprite: {fileID: -750517044847883756, guid: bfbe00f1f1dd7014eb93c1dce183a13f, type: 3}
+  m_Sprite: {fileID: 2650345199280703579, guid: e338070344e205349917dfba891ea19b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.08, y: 0.13}
+  m_Size: {x: 0.6111111, y: 0.8240741}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2392,7 +2392,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208017072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.775, y: -0.01, z: 0}
+  m_LocalPosition: {x: 0.622, y: -0.01, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 1134827132}
@@ -2422,7 +2422,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224066312}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.022, y: 0.775, z: 0}
+  m_LocalPosition: {x: 0.022, y: 0.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1134827132}
@@ -3368,7 +3368,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 410, y: 228}
+  m_AnchoredPosition: {x: -396, y: 237.2}
   m_SizeDelta: {x: 97.6, y: 65.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751543363
@@ -3415,8 +3415,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -3433,8 +3433,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
