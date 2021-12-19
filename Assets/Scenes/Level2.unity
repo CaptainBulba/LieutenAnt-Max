@@ -438,6 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grab: {fileID: 408527844}
+  freezePlayerTime: 0
 --- !u!212 &84101814
 SpriteRenderer:
   m_ObjectHideFlags: 0
