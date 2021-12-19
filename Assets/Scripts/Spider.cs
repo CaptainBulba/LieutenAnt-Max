@@ -8,6 +8,13 @@ public class Spider : MonoBehaviour
     public float freezePlayerTime;
     float randomNumberX;
     float randomNumberY;
+    public float locationX;
+    public float locationY;
+    public float timeToSpawn;
+    bool isSpawned;
+    float timer = 0f;
+    public Sprite[] trailSprites;
+    public SpriteRenderer spriteRenderer;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +24,18 @@ public class Spider : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        timer += Time.deltaTime;
+        if (timer >= timeToSpawn)
+        {
+            SpawnSpider();
+        }
     }
+
+    void SpawnSpider()
+    {
+
+    }
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if(grab != null && grab.isPicked)
