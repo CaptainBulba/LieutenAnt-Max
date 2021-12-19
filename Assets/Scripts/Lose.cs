@@ -15,7 +15,7 @@ public class Lose : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levelToRestart = PlayerPrefs.GetInt("levelTorestart");
+        levelToRestart = PlayerPrefs.GetInt("levelToRestart");
         Debug.Log(levelToRestart);
 
         ChangeText("NOW WE GONNA STARVE BECAUSE OF YOU!");
