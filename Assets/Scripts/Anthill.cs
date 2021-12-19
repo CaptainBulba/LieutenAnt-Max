@@ -11,6 +11,7 @@ public class Anthill : MonoBehaviour
     public Sprite[] Anthillprites;
     public SpriteRenderer spriteRenderer;
     int spriteNumber = 0;
+    public Timer time;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +55,10 @@ public class Anthill : MonoBehaviour
 
         if(itemsBrought == itemsToFinish)
         {
+            Debug.Log(time.timeRemaining);
+            float finishedTime = time.startTime - time.timeRemaining;
+            PlayerPrefs.SetFloat("timeRemaining", time.timeRemaining);
+            PlayerPrefs.SetFloat("finishedTime", finishedTime);
             SceneManager.LoadScene(currentLevel + 1);
         }
 

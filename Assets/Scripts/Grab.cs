@@ -60,6 +60,7 @@ public class Grab : MonoBehaviour
                 grabCheck.collider.gameObject.transform.parent = itemHolder;
                 grabCheck.collider.gameObject.transform.position = itemHolder.position;
                 gameObject.GetComponent<PlayerMovement>().movementSpeed = speedWithItem;
+                PlayerPrefs.SetInt("spiderThrowItem", 0);
                 return;
             }
             

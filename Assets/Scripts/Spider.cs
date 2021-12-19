@@ -52,6 +52,8 @@ public class Spider : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
+        Debug.Log(gameObject.name + " Collided" + col.gameObject.name);
+
         if (grab != null && grab.isPicked && isSpawned)
         {
             grab.itemHolding.GetComponent<Rigidbody2D>().simulated = true;
@@ -73,7 +75,7 @@ public class Spider : MonoBehaviour
                     break;
             }
             grab.itemHolding.GetComponent<Rigidbody2D>().velocity = new Vector3(randomNumberX, randomNumberY, 0);
-
+            PlayerPrefs.SetInt("spiderThrowItem", 1);
             grab.isPicked = false;
 
             StartCoroutine(FreezePlayer());

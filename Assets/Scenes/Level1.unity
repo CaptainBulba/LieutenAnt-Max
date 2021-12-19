@@ -3246,6 +3246,7 @@ MonoBehaviour:
   - {fileID: 5870816906943187945, guid: e3f59c477e326234cb85bcb1ff36a726, type: 3}
   - {fileID: -5441088550122882501, guid: f49d596a50e636b47be04ebd34204503, type: 3}
   spriteRenderer: {fileID: 1740110029}
+  time: {fileID: 1751543363}
 --- !u!61 &1740110032
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3323,6 +3324,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeRemaining: 30
+  startTime: 0
   textMeshPro: {fileID: 1751543364}
 --- !u!114 &1751543364
 MonoBehaviour:

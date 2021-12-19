@@ -5,6 +5,7 @@ using UnityEngine;
 public class Item : MonoBehaviour
 {
     private Rigidbody2D rb;
+    int spiderThrow;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +19,19 @@ public class Item : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Object" || collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Snail" 
-            || collision.gameObject.tag == "Ladybug")
+        spiderThrow = PlayerPrefs.GetInt("spiderThrowItem");
+
+        if(spiderThrow == 1)
         {
-            rb.velocity = Vector3.zero;
-            rb.bodyType = RigidbodyType2D.Kinematic;
+            if (collision.gameObject.tag == "Object" || collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Snail"
+            || collision.gameObject.tag == "Ladybug")
+            {
+
+                rb.velocity = Vector3.zero;
+                rb.bodyType = RigidbodyType2D.Kinematic;
+                PlayerPrefs.SetInt("spiderThrowItem", 0);
+            }
         }
+        
     }
 }

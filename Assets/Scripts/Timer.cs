@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
-    public float timeRemaining = 10;
+    public float timeRemaining;
+    [HideInInspector] public float startTime;
     bool IsRunning = false;
     public TextMeshProUGUI textMeshPro;
     int currentLevel;
@@ -15,6 +16,7 @@ public class Timer : MonoBehaviour
 
     void Start()
     {
+        startTime = timeRemaining;
         currentLevel = SceneManager.GetActiveScene().buildIndex;
         IsRunning = true;
     }

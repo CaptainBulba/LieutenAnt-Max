@@ -8,6 +8,8 @@ public class InBetween : MonoBehaviour
 {
     public TextMeshProUGUI mainText;
     public TextMeshProUGUI antName;
+    public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI finishedTimeText;
     private int whichAnt; // 0 Max & 1 Bob
     private string[] antNames = { "MAX", "BOB" };
     private int lineNumber = 0;
@@ -20,7 +22,19 @@ public class InBetween : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         currentLevel = SceneManager.GetActiveScene().buildIndex;
+
+        if(currentLevel != 0)
+        {
+            string finishedTime = PlayerPrefs.GetFloat("finishedTime").ToString("0.0");
+            float scoreNumber = PlayerPrefs.GetFloat("timeRemaining") * 100;
+            string scoreToString = scoreNumber.ToString("0");
+            Debug.Log(finishedTime);
+            finishedTimeText.text = string.Format("FINISH TIME:" + finishedTime);
+            scoreText.text = string.Format("SCORE:" + scoreToString);
+        }
+
         if (currentLevel == 0)
         {
             blueberry.SetActive(false);
@@ -28,6 +42,7 @@ public class InBetween : MonoBehaviour
             ChangeText("HEY MAX, I GOT AN ASSIGNMENT FOR YOU", whichAnt);
             lineNumber++;
         }
+
         if (currentLevel == 2)
         {
             blueberry.SetActive(false);
