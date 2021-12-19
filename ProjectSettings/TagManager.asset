@@ -7,6 +7,8 @@ TagManager:
   - Item
   - Snail
   - Ladybug
+  - Wall
+  - Object
   layers:
   - Default
   - TransparentFX
