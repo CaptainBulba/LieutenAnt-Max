@@ -31,10 +31,7 @@ public class Spider : MonoBehaviour
 
         if (timer >= timeToSpawn && !isSpawned)
         {
-
-            spider.GetComponent<Renderer>().enabled = true;
-            spriteRenderer.sprite = trailSprites[0];
-            SpawnSpider();
+            StartCoroutine(SpawnSpider());
         }
     }
 
@@ -55,7 +52,7 @@ public class Spider : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(grab != null && grab.isPicked && isSpawned)
+        if (grab != null && grab.isPicked && isSpawned)
         {
             grab.itemHolding.GetComponent<Rigidbody2D>().simulated = true;
             grab.itemHolding.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
@@ -63,7 +60,7 @@ public class Spider : MonoBehaviour
             grab.itemHolding.transform.position = grab.grabDetect.position;
 
             float whichSide = Random.Range(0, 2);
-            
+
             switch (whichSide)
             {
                 case 0:
@@ -75,13 +72,12 @@ public class Spider : MonoBehaviour
                     randomNumberY = Random.Range(-2.0f, -7.0f);
                     break;
             }
-            Debug.Log(whichSide + " RandomX:" + randomNumberX + " RandomY: " + randomNumberY);
             grab.itemHolding.GetComponent<Rigidbody2D>().velocity = new Vector3(randomNumberX, randomNumberY, 0);
 
             grab.isPicked = false;
 
             StartCoroutine(FreezePlayer());
-        }   
+        }
     }
     IEnumerator FreezePlayer()
     {
@@ -96,4 +92,3 @@ public class Spider : MonoBehaviour
 
     }
 }
-
