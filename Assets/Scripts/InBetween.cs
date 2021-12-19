@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class InBetween : MonoBehaviour
 {
-    public TextMeshProUGUI textLeft;
-    public TextMeshProUGUI textRight;
+    public TextMeshProUGUI storyText;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI finishedTimeText;
-    private int whichAnt; // 0 Max & 1 Bob
-    private string[] antNames = { "MAX", "BOB", "QUEEN" };
+    public TextMeshProUGUI nameLeft;
+    public TextMeshProUGUI nameRight;
+    private int whichAnt; // 0 Max 
     private int lineNumber = 0;
     string textToMain;
     public GameObject objectOne;
@@ -22,61 +22,62 @@ public class InBetween : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
         currentLevel = SceneManager.GetActiveScene().buildIndex;
+        objectOne.SetActive(false);
+        objectTwo.SetActive(false);
+        objectThree.SetActive(false);
 
-        if(currentLevel != 0)
+        if (currentLevel != 0)
         {
             string finishedTime = PlayerPrefs.GetFloat("finishedTime").ToString("0.0");
             float scoreNumber = PlayerPrefs.GetFloat("timeRemaining") * 100;
             string scoreToString = scoreNumber.ToString("0");
-            Debug.Log(scoreNumber);
             finishedTimeText.text = string.Format("TIME:" + finishedTime);
             scoreText.text = string.Format("SCORE:" + scoreToString);
         } 
 
         if (currentLevel == 0)
         {
-            objectOne.SetActive(false);
             whichAnt = 1;
-            ChangeText("HEY MAX, I GOT AN ASSIGNMENT FOR YOU", whichAnt);
+            ChangeText("PRIVATE MAX, I HAVE A MISSION FOR YOU!", whichAnt);
             lineNumber++;
         }
+
         if (currentLevel == 2)
         {
-            objectOne.SetActive(false);
-            objectTwo.SetActive(false);
-            objectThree.SetActive(false);
             whichAnt = 1;
-            ChangeText("MY BOI, GOOD JOB!", whichAnt);
+            ChangeText("GOOD JOB, MAX!", whichAnt);
             lineNumber++;
         }
 
         if (currentLevel == 4)
         {
-            objectOne.SetActive(false);
-            objectTwo.SetActive(false);
-            objectThree.SetActive(false);
             whichAnt = 1;
-            ChangeText("GOOD JOB, MAX.", whichAnt);
+            ChangeText("WELL DONE, MAX.", whichAnt);
             lineNumber++;
         }
+
         if (currentLevel == 6)
         {
-            objectOne.SetActive(false);
-            objectTwo.SetActive(false);
-            objectThree.SetActive(false);
             whichAnt = 1;
-            ChangeText("GREAT JOB, MAX! BUT NOW I NEED YOU TO GO BACK TO THE DESERT.", whichAnt);
+            ChangeText("GREAT JOB, MAX!", whichAnt);
             lineNumber++;
         }
+
         if (currentLevel == 8)
         {
-            objectOne.SetActive(false);
-            objectTwo.SetActive(false);
-            objectThree.SetActive(false);
-            whichAnt = 2;
-            ChangeText("THANK YOU, MAX, FOR MY FLOWERS.", whichAnt);
+            objectOne.SetActive(true);
+            objectTwo.SetActive(true);
+            objectThree.SetActive(true);
+            whichAnt = 1;
+            ChangeText("THANK YOU, MAX, FOR MY FLOWERS", whichAnt);
+            lineNumber++;
+        }
+
+        if (currentLevel == 10)
+        {
+            whichAnt = 1;
+            ChangeText("YOU HAVE DONE A GREAT JOB PREPARING OUR COLONY!", whichAnt);
             lineNumber++;
         }
 
@@ -92,7 +93,7 @@ public class InBetween : MonoBehaviour
                 switch (lineNumber)
                 {
                     case 1:
-                        textToMain = "WHAT'S UP MY BOI?";
+                        textToMain = "WHAT CAN I DO?";
                         whichAnt = 0;
                         break;
                     case 2:
@@ -113,11 +114,11 @@ public class InBetween : MonoBehaviour
                         whichAnt = 1;
                         break;
                     case 6:
-                        textToMain = "AND YEAH, SPACE IS TO PICK UP ITEMS. GOOD LUCK!";
+                        textToMain = "DO NOT FORGET, PRESS SPACE TO PICK UP ITEMS!";
                         whichAnt = 1;
                         break;
                     case 7:
-                        textToMain = "OK BROTHER FROM ANOTHER MOTHER";
+                        textToMain = "YES SIR!";
                         whichAnt = 0;
                         break;
                     case 8:
@@ -130,27 +131,27 @@ public class InBetween : MonoBehaviour
                 switch (lineNumber)
                 {
                     case 1:
-                        textToMain = "WE NEED MORE STUFF";
+                        textToMain = "BUT WE STILL NEED MORE STUFF";
                         whichAnt = 1;
                         break;
                     case 2:
-                        textToMain = "BRUH, NOT AGAIN. IT WAS DANGEROUS AS HELL";
+                        textToMain = "NO PROBLEM. WHAT DO YOU NEED?";
                         whichAnt = 0;
                         break;
                     case 3:
-                        textToMain = "YEAH, YEAH, YEAH, JUST DO IT";
+                        textToMain = "YOU NEED TO BRING A LEAF, SAND AND ANOTHER BLUEBERRY";
                         whichAnt = 1;
                         break;
                     case 4:
-                        textToMain = "NOW YOU HAVE TO BRING THREE THINGS";
-                        whichAnt = 1;
-                        break;
-                    case 5:
-                        textToMain = "THAT'S HOW THEY LOOK";
+                        textToMain = "DO YOU RECOGNISE THESE?";
                         whichAnt = 1;
                         objectOne.SetActive(true);
                         objectTwo.SetActive(true);
                         objectThree.SetActive(true);
+                        break;
+                    case 5:
+                        textToMain = "YES! ROGER THAT!";
+                        whichAnt = 0;
                         break;
                     case 6:
                         SceneManager.LoadScene(currentLevel + 1);
@@ -162,27 +163,27 @@ public class InBetween : MonoBehaviour
                 switch (lineNumber)
                 {
                     case 1:
-                        textToMain = "GOOD JOB, MAX.";
-                        whichAnt = 1;
-                        break;
-                    case 2:
-                        textToMain = "THAT WAS TOO EASY.";
+                        textToMain = "THAT WAS TOO EASY";
                         whichAnt = 0;
                         break;
-                    case 3:
+                    case 2:
                         textToMain = "OH? YOU WANT A CHALLENGE?";
                         whichAnt = 1;
                         break;
-                    case 4:
+                    case 3:
                         textToMain = "SURE!";
-                        whichAnt = 1;
+                        whichAnt = 0;
                         break;
-                    case 5:
-                        textToMain = "OK, GO TO THE DESERT, AND BRING BACK A BONE";
+                    case 4:
+                        textToMain = "OK, GO TO THE DESERT, AND BRING BACK A BONE, FLOWER AND MORE SAND";
                         whichAnt = 1;
                         objectOne.SetActive(true);
                         objectTwo.SetActive(true);
                         objectThree.SetActive(true);
+                        break;
+                    case 5:
+                        textToMain = "ON MY WAY!";
+                        whichAnt = 0;
                         break;
                     case 6:
                         SceneManager.LoadScene(currentLevel + 1);
@@ -194,18 +195,30 @@ public class InBetween : MonoBehaviour
                 switch (lineNumber)
                 {
                     case 1:
+                        textToMain = "BUT NOW I NEED YOU TO GO BACK TO THE DESERT";
+                        whichAnt = 1;
+                        break;
+                    case 2:
                         textToMain = "BUT I JUST GOT HOME!";
                         whichAnt = 0;
                     break;
-                    case 2:
-                        textToMain = "TONIGHT IS THE QUEEN’S BIRTHDAY PARTY. I NEED YOU TO GO COLLECT HER FAVORITE DESERT ROSES.";
+                    case 3:
+                        textToMain = "TONIGHT IS THE QUEEN’S BIRTHDAY PARTY";
                         whichAnt = 1;
                     break;
-                    case 3:
+                    case 4:
+                        textToMain = "I NEED YOU TO GO COLLECT THREE OF HER FAVORITE DESERT FLOWERS";
+                        whichAnt = 1;
+                    break;
+                    case 5:
+                        textToMain = "YOU REMEMBER THEM FROM YOUR LAST TRIP";
+                        whichAnt = 1;
+                        break;
+                    case 6:
                         textToMain = "ANYTHING FOR MY QUEEN!";
                         whichAnt = 0;
-                    break;
-                    case 4:
+                        break;
+                    case 7:
                         SceneManager.LoadScene(currentLevel + 1);
                         break;
                     }
@@ -219,20 +232,61 @@ public class InBetween : MonoBehaviour
                         whichAnt = 0;
                         break;
                     case 2:
-                        textToMain = "YOU ARE A GOOD LIEUTENANT, I HAVE A MISSION FOR YOU. I WANT YOU TO GO AND PREPARE A NEW HOME FOR OUR COLONY.";
-                        whichAnt = 2;
+                        textToMain = "YOU ARE A GOOD PRIVATE, I HAVE A MISSION FOR YOU.";
+                        whichAnt = 1;
                         break;
                     case 3:
+                        textToMain = "I WANT YOU TO GO AND PREPARE A NEW HOME FOR OUR COLONY";
+                        whichAnt = 1;
+                        break;
+                    case 4:
                         textToMain = "WHERE?";
                         whichAnt = 0;
                         break;
-                    case 4:
+                    case 5:
                         textToMain = "ON THE MOON.";
+                        whichAnt = 1;
+                        break;
+                    case 6:
+                        textToMain = "*AKWARD SILENCE*";
                         whichAnt = 2;
                         break;
-                    case 5:
+                    case 7:
                         textToMain = "WE’LL BE EVERYWHERE!";
                         whichAnt = 0;
+                        break;
+                    case 8:
+                        SceneManager.LoadScene(currentLevel + 1);
+                        break;
+                }
+            }
+
+            if (currentLevel == 10)
+            {
+                switch (lineNumber)
+                {
+                    case 1:
+                        textToMain = "IT IS MY HONOR TO SERVE YOU";
+                        whichAnt = 0;
+                        break;
+                    case 2:
+                        textToMain = "FOR YOUR BRAVERY AND CONTRIBUTION TO THE COLONY";
+                        whichAnt = 1;
+                        break;
+                    case 3:
+                        textToMain = "YOU WILL BE AWARDED THE RANK OF LIEUTENANT";
+                        whichAnt = 1;
+                        objectOne.SetActive(true);
+                        break;
+                    case 4:
+                        textToMain = "HORRAH!";
+                        whichAnt = 0;
+                        objectOne.SetActive(false);
+                        objectTwo.SetActive(true);
+                        break;
+                    case 5:
+                        textToMain = "CONGRATULATIONS LIEUTENANT MAX!";
+                        whichAnt = 1;
                         break;
                     case 6:
                         SceneManager.LoadScene(currentLevel + 1);
@@ -246,8 +300,23 @@ public class InBetween : MonoBehaviour
 
     void ChangeText(string text, int ant)
     {
-       // mainText.text = string.Format(text);
-        //antName.text = string.Format(" — " + antNames[ant]);
+        storyText.text = string.Format(text);
+
+        switch (ant)
+        {
+            case 0:
+                nameLeft.enabled = true;
+                nameRight.enabled = false;
+                break;
+            case 1:
+                nameLeft.enabled = false;
+                nameRight.enabled = true;
+                break;
+            case 2:
+                nameLeft.enabled = false;
+                nameRight.enabled = false;
+                break;
+        }
     }
 
 }

@@ -8,7 +8,6 @@ public class Lose : MonoBehaviour
 {
     int levelToRestart;
     public TextMeshProUGUI mainText;
-    public TextMeshProUGUI antName;
     int lineNumber = 0;
     string textToMain;
 
@@ -18,7 +17,7 @@ public class Lose : MonoBehaviour
         levelToRestart = PlayerPrefs.GetInt("levelToRestart");
         Debug.Log(levelToRestart);
 
-        ChangeText("NOW WE GONNA STARVE BECAUSE OF YOU!");
+        ChangeText("YOU BRING SHAME UPON YOUR COLONY!");
         lineNumber++;
     }
 
@@ -44,7 +43,6 @@ public class Lose : MonoBehaviour
     void ChangeText(string text)
     {
         mainText.text = string.Format(text);
-        antName.text = string.Format(" — Bob");
     }
 
 
