@@ -16,14 +16,13 @@ public class Anthill : MonoBehaviour
     void Start()
     {
         currentLevel = SceneManager.GetActiveScene().buildIndex;
-        switch (currentLevel)
+        if(currentLevel == 1)
         {
-            case 1:
-                itemsToFinish = 1;
-                break;
-            case 3:
-                itemsToFinish = 4;
-                break;
+            itemsToFinish = 1;
+        }
+        else
+        {
+            itemsToFinish = 3;
         }
     }
 
@@ -46,10 +45,8 @@ public class Anthill : MonoBehaviour
         itemsBrought++;
         item.SetActive(false);
         spriteNumber += 1;
-        if(spriteNumber != 3)
-        {
-            spriteRenderer.sprite = Anthillprites[spriteNumber];
-        }
+        spriteRenderer.sprite = Anthillprites[spriteNumber];
+
         
         yield return new WaitForSeconds(1);
 
@@ -61,6 +58,5 @@ public class Anthill : MonoBehaviour
             PlayerPrefs.SetFloat("finishedTime", finishedTime);
             SceneManager.LoadScene(currentLevel + 1);
         }
-
     }
 }

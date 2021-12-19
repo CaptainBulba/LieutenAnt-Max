@@ -239,9 +239,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainText: {fileID: 1888423159}
   antName: {fileID: 800862879}
-  blueberry: {fileID: 1692331561}
-  leaf: {fileID: 0}
-  sand: {fileID: 0}
+  scoreText: {fileID: 0}
+  finishedTimeText: {fileID: 0}
+  objectOne: {fileID: 1692331561}
+  objectTwo: {fileID: 0}
+  objectThree: {fileID: 0}
 --- !u!114 &115310684
 MonoBehaviour:
   m_ObjectHideFlags: 0

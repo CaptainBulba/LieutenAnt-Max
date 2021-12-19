@@ -35,7 +35,7 @@ public class Timer : MonoBehaviour
                 timeRemaining = 0;
                 IsRunning = false;
                 PlayerPrefs.SetInt("levelTorestart", currentLevel);
-                SceneManager.LoadScene(4);
+                SceneManager.LoadScene(9);
             }
         }
     }
