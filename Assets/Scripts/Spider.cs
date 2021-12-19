@@ -8,37 +8,54 @@ public class Spider : MonoBehaviour
     public float freezePlayerTime;
     float randomNumberX;
     float randomNumberY;
-    public float locationX;
-    public float locationY;
     public float timeToSpawn;
+    public float spiderTimeActive;
     bool isSpawned;
     float timer = 0f;
     public Sprite[] trailSprites;
     public SpriteRenderer spriteRenderer;
+    GameObject spider;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        spider = gameObject;
+        spider.GetComponent<Renderer>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= timeToSpawn)
+
+        if (timer >= timeToSpawn && !isSpawned)
         {
+
+            spider.GetComponent<Renderer>().enabled = true;
+            spriteRenderer.sprite = trailSprites[0];
             SpawnSpider();
         }
     }
 
-    void SpawnSpider()
+    IEnumerator SpawnSpider()
     {
+        spider.GetComponent<Renderer>().enabled = true;
+        spriteRenderer.sprite = trailSprites[0];
 
+        yield return new WaitForSeconds(2);
+        spriteRenderer.sprite = trailSprites[1];
+        isSpawned = true;
+
+        yield return new WaitForSeconds(spiderTimeActive);
+        spider.GetComponent<Renderer>().enabled = false;
+        isSpawned = false;
+        timer = 0f;
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(grab != null && grab.isPicked)
+        if(grab != null && grab.isPicked && isSpawned)
         {
             grab.itemHolding.GetComponent<Rigidbody2D>().simulated = true;
             grab.itemHolding.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
