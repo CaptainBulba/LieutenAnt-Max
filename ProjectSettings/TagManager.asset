@@ -9,6 +9,8 @@ TagManager:
   - Ladybug
   - Wall
   - Object
+  - Play
+  - Credits
   layers:
   - Default
   - TransparentFX

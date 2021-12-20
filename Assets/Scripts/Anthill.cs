@@ -52,7 +52,7 @@ public class Anthill : MonoBehaviour
 
         if(itemsBrought == itemsToFinish)
         {
-            Debug.Log(time.timeRemaining);
+            BackgroundSound.StopSound();
             float finishedTime = time.startTime - time.timeRemaining;
             PlayerPrefs.SetFloat("timeRemaining", time.timeRemaining);
             PlayerPrefs.SetFloat("finishedTime", finishedTime);
