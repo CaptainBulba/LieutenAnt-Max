@@ -27,7 +27,7 @@ public class InBetween : MonoBehaviour
         objectTwo.SetActive(false);
         objectThree.SetActive(false);
 
-        if (currentLevel != 0)
+        if (currentLevel != 1)
         {
             string finishedTime = PlayerPrefs.GetFloat("finishedTime").ToString("0.0");
             float scoreNumber = PlayerPrefs.GetFloat("timeRemaining") * 100;
@@ -36,35 +36,35 @@ public class InBetween : MonoBehaviour
             scoreText.text = string.Format("SCORE:" + scoreToString);
         } 
 
-        if (currentLevel == 0)
+        if (currentLevel == 1)
         {
             whichAnt = 1;
             ChangeText("PRIVATE MAX, I HAVE A MISSION FOR YOU!", whichAnt);
             lineNumber++;
         }
 
-        if (currentLevel == 2)
+        if (currentLevel == 3)
         {
             whichAnt = 1;
             ChangeText("GOOD JOB, MAX!", whichAnt);
             lineNumber++;
         }
 
-        if (currentLevel == 4)
+        if (currentLevel == 5)
         {
             whichAnt = 1;
             ChangeText("WELL DONE, MAX.", whichAnt);
             lineNumber++;
         }
 
-        if (currentLevel == 6)
+        if (currentLevel == 7)
         {
             whichAnt = 1;
             ChangeText("GREAT JOB, MAX!", whichAnt);
             lineNumber++;
         }
 
-        if (currentLevel == 8)
+        if (currentLevel == 9)
         {
             objectOne.SetActive(true);
             objectTwo.SetActive(true);
@@ -74,7 +74,7 @@ public class InBetween : MonoBehaviour
             lineNumber++;
         }
 
-        if (currentLevel == 10)
+        if (currentLevel == 11)
         {
             whichAnt = 1;
             ChangeText("YOU HAVE DONE A GREAT JOB PREPARING OUR COLONY!", whichAnt);
@@ -88,7 +88,7 @@ public class InBetween : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            if (currentLevel == 0)
+            if (currentLevel == 1)
             {
                 switch (lineNumber)
                 {
@@ -126,7 +126,7 @@ public class InBetween : MonoBehaviour
                         break;
                 }
             }
-            if (currentLevel == 2)
+            if (currentLevel == 3)
             {
                 switch (lineNumber)
                 {
@@ -158,7 +158,7 @@ public class InBetween : MonoBehaviour
                         break;
                 }
             }
-            if (currentLevel == 4)
+            if (currentLevel == 5)
             {
                 switch (lineNumber)
                 {
@@ -190,7 +190,7 @@ public class InBetween : MonoBehaviour
                         break;
                 }
             }
-            if (currentLevel == 6)
+            if (currentLevel == 7)
             {
                 switch (lineNumber)
                 {
@@ -223,7 +223,7 @@ public class InBetween : MonoBehaviour
                         break;
                     }
                 }
-            if (currentLevel == 8)
+            if (currentLevel == 9)
             {
                 switch (lineNumber)
                 {
@@ -261,7 +261,7 @@ public class InBetween : MonoBehaviour
                 }
             }
 
-            if (currentLevel == 10)
+            if (currentLevel == 11)
             {
                 switch (lineNumber)
                 {

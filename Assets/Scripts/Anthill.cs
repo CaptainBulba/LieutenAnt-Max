@@ -16,7 +16,7 @@ public class Anthill : MonoBehaviour
     void Start()
     {
         currentLevel = SceneManager.GetActiveScene().buildIndex;
-        if(currentLevel == 1)
+        if(currentLevel == 2)
         {
             itemsToFinish = 1;
         }

@@ -18,7 +18,6 @@ public class LadyBug : MonoBehaviour
     {
         if (col.gameObject.tag == "Player" && !isSlowDownOn)
         {
-            Debug.Log("I started");
             StartCoroutine(slowDownTimer());
         }
     }
@@ -27,12 +26,10 @@ public class LadyBug : MonoBehaviour
         
         character.movementSpeed = character.movementSpeed - slowDownSpeed;
         isSlowDownOn = true;
-        Debug.Log("It is true");
         yield return new WaitForSeconds(slowDownTime);
 
         character.movementSpeed = normalSpeed;
         isSlowDownOn = false;
-        Debug.Log("It is false");
     }
 }
 

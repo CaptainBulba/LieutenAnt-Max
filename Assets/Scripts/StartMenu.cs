@@ -24,12 +24,19 @@ public class StartMenu : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(0) && hit.collider.gameObject.name == "Play")
             {
+                BackgroundSound.StopSound();
                 SceneManager.LoadScene(currentLevel + 1);
             }
 
             if (Input.GetMouseButtonDown(0) && hit.collider.gameObject.name == "Credits")
             {
+                BackgroundSound.StopSound();
                 SceneManager.LoadScene(12);
+            }
+
+            if (Input.GetMouseButtonDown(0) && hit.collider.gameObject.name == "Menu")
+            {
+                SceneManager.LoadScene(0);
             }
 
         }
